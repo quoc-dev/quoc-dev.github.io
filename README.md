@@ -2,6 +2,14 @@
 
 Android Development - Iot - Smart Home
 
+# Personal website
+This is my personal website built using Jekyll and the following themes:
+        
+- [Freelancer](https://startbootstrap.com/template-overviews/freelancer/) by Start Bootstrap
+- [Hyde](http://hyde.getpoole.com/)  by @mdo
+
+Because the default Jekyll paginator cannot paginate based on categories, Jekyll is disabled and the generated site is pushed directly into the repository. If you want to look at the source code, please have a look at the `jekyll-source` folder.
+
 ## License
 
 The MIT License (MIT)
