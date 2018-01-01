@@ -1,130 +1,19 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+---
+layout: main
+---
+{% for post in paginator.posts %}
+<article class="post">
+  {% if post.img %}
+    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
+  {% else %}
+  {% endif %}
+  <div class="post-content">
+    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
+    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
+    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
+  </div>
+</article>
+{% endfor %}
 
-<meta name="theme-color" content="#000000">
-<head>
-    <link href="http://gmpg.org/xfn/11" rel="profile">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-    <!-- Enable responsiveness on mobile devices-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-    <title>
-
-        Quoc DEV &middot; Blog of Quoc DEV focussed on Android development, open source and
-        IoT.
-
-    </title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/blog/poole.css">
-    <link rel="stylesheet" href="../css/blog/syntax.css">
-    <link rel="stylesheet" href="../css/blog/hyde.css">
-    <link rel="stylesheet"
-          href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
-    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"
-          type="text/css">
-
-    <!-- Icons -->
-    <!-- <link rel="favicon-144-precomposed" sizes="144x144"
-           href="http://jeroenmols.com/favicon-144-precomposed.png">
-     <link rel="shortcut icon" href="http://jeroenmols.com/favicon.ico">-->
-</head>
-
-<body class="theme-base-custom">
-<div class="sidebar">
-    <div class="container sidebar-sticky">
-        <div class="sidebar-about sidebar-title">
-
-            <img class="img-responsive" src="../img/avatar.png" alt="">
-
-            <h1>
-                <a class="sidebar-link" href="/blog">
-                    Quoc DEV
-                </a>
-            </h1>
-
-            <ul class="list-inline">
-
-                <li>
-                    <a href="https://twitter.com/quocdev" class="btn-social btn-outline"
-                       target="blank"><i class="fa fa-fw fa-twitter"></i></a>
-                </li>
-
-                <li>
-                    <a href="http://stackoverflow.com/users/5375354/quoc-dev?tab=profile"
-                       class="btn-social btn-outline" target="blank"><i
-                            class="fa fa-fw fa-stack-overflow"></i></a>
-                </li>
-
-                <li>
-                    <a href="https://github.com/Quoc-DEV" class="btn-social btn-outline"
-                       target="blank"><i class="fa fa-fw fa-github"></i></a>
-                </li>
-
-                <li>
-                    <a href="https://www.linkedin.com/in/quoc-nguyen-phuc-0ab024116/"
-                       class="btn-social btn-outline" target="blank"><i
-                            class="fa fa-fw fa-linkedin"></i></a>
-                </li>
-
-            </ul>
-
-            <p class="sidebar-subtitle">Android developer with a great <a class="sidebar-link"
-                                                                          href="/">Home</a>.
-            </p>
-        </div>
-        <div class="copyright">
-            <p>Copyright &copy; Quoc DEV 2017</p>
-        </div>
-    </div>
-</div>
-
-<div class="content container">
-    <div class="posts">
-
-        <div class="post">
-
-
-            <div class="post-overlay-header"
-                 style="background-image: url(/img/blog/cabin.png)">
-                <div class="post-overlay-header-title">
-
-
-                    <h1 class="post-title">
-                        <a href="/blog/2017/03/08/appcrash/">
-                            Why your app should crash
-                        </a>
-                    </h1>
-
-                    <span class="post-date">08 Mar 2017</span>
-
-
-                </div>
-            </div>
-
-
-            Too many times I&#39;ve seen developers trying to avoid crashes at all cost. But are
-            unhandled exceptions really that bad? And are null checks really the answer? Actually,
-            sometimes you...
-
-
-        </div>
-
-    </div>
-
-    <div class="pagination">
-
-        <span class="pagination-item newer">Newer</span>
-
-        <span class="pagination-item older">Older</span>
-
-    </div>
-
-</div>
-</body>
-</html>
+{% include pagination.html %}
